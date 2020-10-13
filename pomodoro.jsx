@@ -25,17 +25,16 @@ class Pomodoro extends React.Component{
         if(this.state.runningStatus == "running")
             return;
          
-        if(prevProps.tempsTravail != this.props.tempsTravail || prevProps.tempsPause != this.props.tempsPause){
-            if(this.state.periode == "travail"){
-                this.setState({
-                    minutes: this.props.tempsTravail
-                });
-            } else {
-                this.setState({
-                    minutes: this.props.tempsPause
-                });
-            }    
-        }    
+        if(prevProps.tempsTravail != this.props.tempsTravail && this.state.periode == "travail"){
+            this.setState({
+                minutes: this.props.tempsTravail
+            });
+        }
+        if(prevProps.tempsPause != this.props.tempsPause && this.state.periode == "pause"){
+            this.setState({
+                minutes: this.props.tempsPause
+            });
+        }
     }
 
     decrement(){
