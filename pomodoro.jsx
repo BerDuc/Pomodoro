@@ -8,7 +8,6 @@ class Pomodoro extends React.Component{
             periode: "travail",
             pomodoros_accomplis: 0,  
             timer: null,
-            runningStatus: "between",
             btnValue: "Start",
         }
         this.alarm = new Audio("./ressources/analog-watch-alarm_daniel-simion.mp3"); 
@@ -20,10 +19,10 @@ class Pomodoro extends React.Component{
         this.beep = this.beep.bind(this); 
     }
 
-    getDerivedStateFromProps(props, state){
+    static getDerivedStateFromProps(props, state){
         return {
             minutes: props.tempsTravail
-        }
+        };
     }
 
     decrement(){
@@ -60,7 +59,6 @@ class Pomodoro extends React.Component{
     startTimer(){
         this.setState({
             timer: window.setInterval(this.decrement, 1000),
-            runningStatus: "running",
             btnValue: "Stop"
         })
     }
@@ -69,7 +67,6 @@ class Pomodoro extends React.Component{
         window.clearInterval(this.state.timer);
         this.setState({
             timer: null,
-            runningStatus: "pause",
             btnValue: "Start"
         }) 
     }
