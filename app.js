@@ -22,7 +22,6 @@ class App extends React.Component {
         this.setState({
             tempsTravail: temps
         });
-        console.log(this.state.tempsTravail);
     }
 
     render(){
