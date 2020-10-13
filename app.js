@@ -16,7 +16,8 @@ class App extends React.Component {
         this.setState({
             tempsPause: temps
         });
-    }
+    }  
+    
 
     handleChangeTravail(temps){
         console.log("handleChangeTravail app"+temps)
