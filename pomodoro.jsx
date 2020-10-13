@@ -19,6 +19,12 @@ class Pomodoro extends React.Component{
         this.beep = this.beep.bind(this); 
     }
 
+    static getDerivedStateFromProps(props, state){
+        return {
+            minutes: props.tempsTravail
+        };
+    }
+
     decrement(){
         if(this.state.secondes == 0){
             if(this.state.minutes == 0){
@@ -70,6 +76,7 @@ class Pomodoro extends React.Component{
             this.setState((state, props) =>{
                 return {
                     periode: "pause",
+                    runningStatus: "between",
                     pomodoros_accomplis: state.pomodoros_accomplis+1,
                     minutes: props.tempsPause
                 }
@@ -78,6 +85,7 @@ class Pomodoro extends React.Component{
             this.setState((state, props) =>{
                 return {
                     periode: "travail",
+                    runningStatus: "between",
                     minutes: props.tempsTravail
                 }
             });
@@ -90,12 +98,19 @@ class Pomodoro extends React.Component{
     }
 
     render(){
-        console.log(this.props.tempsTravail); 
-        return <div>
-                <h1>Pomodoro</h1>
-                <p>{this.state.minutes}: {this.state.secondes.toPrecision()}</p>
-                <input type="button" value={this.state.btnValue} onClick={this.clickTimer} />  
-                <p>Nombre de pomodoros que vous avez fait: {this.state.pomodoros_accomplis}</p>      
+        return <div className="container">
+            <div>
+                <h1 className="title has-text-centered">Pomodoro</h1>
             </div>
+            <div className="has-text-centered is-size-1">
+                <p>{this.state.minutes}: {this.state.secondes.toString().padStart(2, '0')}</p>
+            </div>            
+            <div className="has-text-centered">
+                <input className="button" type="button" value={this.state.btnValue} onClick={this.clickTimer} />  
+            </div>
+            <div className="section">
+                <p>Nombre de pomodoros que vous avez fait: {this.state.pomodoros_accomplis}</p>      
+            </div>               
+        </div>
     }
 }
