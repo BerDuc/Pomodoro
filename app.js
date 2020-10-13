@@ -7,7 +7,8 @@ class App extends React.Component {
             tempsPause: 5,
             tempsTravail: 25
         }
-       
+        this.handleChangePause = this.handleChangePause.bind(this); 
+        this.handleChangeTravail = this.handleChangeTravail.bind(this); 
     }
 
     handleChangePause(temps){
