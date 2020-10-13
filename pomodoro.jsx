@@ -114,6 +114,7 @@ class Pomodoro extends React.Component{
         return <div className="container">
             <div>
                 <h1 className="title has-text-centered">Pomodoro</h1>
+                <h2 className="subtitle has-text-centered">{this.state.periode}</h2>
             </div>
             <div className="has-text-centered is-size-1">
                 <p>{this.state.minutes}: {this.state.secondes.toString().padStart(2, '0')}</p>
