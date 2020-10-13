@@ -93,7 +93,6 @@ class Pomodoro extends React.Component{
     }
 
     beep(){
-        console.log("beep");
         this.alarm.play(); 
     }
 
