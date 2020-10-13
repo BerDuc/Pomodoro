@@ -28,8 +28,16 @@ class App extends React.Component {
 
     render(){
         return <div>
-            <Pomodoro tempsTravail={this.state.tempsTravail} tempsPause={this.state.tempsPause}/>
-            <EntreeTemps handleChangePause={this.handleChangePause} handleChangeTravail={this.handleChangeTravail}/>
+            <div className="section">
+                <div className="columns">
+                    <div className="column">
+                        <Pomodoro tempsTravail={this.state.tempsTravail} tempsPause={this.state.tempsPause}/>                    
+                    </div>
+                    <div className="column">
+                        <EntreeTemps handleChangePause={this.handleChangePause} handleChangeTravail={this.handleChangeTravail}/>              
+                    </div>    
+                </div>
+            </div>
         </div>
     }
 }
