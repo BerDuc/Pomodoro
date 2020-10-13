@@ -9,20 +9,33 @@ class Pomodoro extends React.Component{
             pomodoros_accomplis: 0,  
             timer: null,
             btnValue: "Start",
+            runningStatus: "nonRunning"
         }
         this.alarm = new Audio("./ressources/analog-watch-alarm_daniel-simion.mp3"); 
         this.decrement = this.decrement.bind(this); 
         this.clickTimer = this.clickTimer.bind(this); 
         this.startTimer = this.startTimer.bind(this); 
         this.stopTimer = this.stopTimer.bind(this); 
-        this.switchTimer = this.switchTimer.bind(this); 
+        this.switchTimer = this.switchTimer.bind(this);
         this.beep = this.beep.bind(this); 
     }
 
-    static getDerivedStateFromProps(props, state){
-        return {
-            minutes: props.tempsTravail
-        };
+    componentDidUpdate(prevProps, prevState){
+
+        if(this.state.runningStatus == "running")
+            return;
+         
+        if(prevProps.tempsTravail != this.props.tempsTravail || prevProps.tempsPause != this.props.tempsPause){
+            if(this.state.periode == "travail"){
+                this.setState({
+                    minutes: this.props.tempsTravail
+                });
+            } else {
+                this.setState({
+                    minutes: this.props.tempsPause
+                });
+            }    
+        }    
     }
 
     decrement(){
@@ -59,6 +72,7 @@ class Pomodoro extends React.Component{
     startTimer(){
         this.setState({
             timer: window.setInterval(this.decrement, 1000),
+            runningStatus: "running",
             btnValue: "Stop"
         })
     }
@@ -67,6 +81,7 @@ class Pomodoro extends React.Component{
         window.clearInterval(this.state.timer);
         this.setState({
             timer: null,
+            runningStatus: "paused", 
             btnValue: "Start"
         }) 
     }
@@ -76,7 +91,7 @@ class Pomodoro extends React.Component{
             this.setState((state, props) =>{
                 return {
                     periode: "pause",
-                    runningStatus: "between",
+                    runningStatus: "nonRunning",
                     pomodoros_accomplis: state.pomodoros_accomplis+1,
                     minutes: props.tempsPause
                 }
@@ -85,7 +100,7 @@ class Pomodoro extends React.Component{
             this.setState((state, props) =>{
                 return {
                     periode: "travail",
-                    runningStatus: "between",
+                    runningStatus: "nonRunning",
                     minutes: props.tempsTravail
                 }
             });
