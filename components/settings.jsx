@@ -1,4 +1,4 @@
-class EntreeTemps extends React.Component {
+class Settings extends React.Component {
     constructor(props){
         super(props);
         this.state = {

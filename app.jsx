@@ -32,7 +32,7 @@ class App extends React.Component {
                         <Pomodoro tempsTravail={this.state.tempsTravail} tempsPause={this.state.tempsPause}/>                    
                     </div>
                     <div className="column">
-                        <EntreeTemps
+                        <Settings
                             tempsPause = {this.state.tempsPause}
                             tempsTravail = {this.state.tempsTravail} 
                             handleChangePause={this.handleChangePause} 
