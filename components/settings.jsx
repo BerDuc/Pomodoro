@@ -3,10 +3,12 @@ class Settings extends React.Component {
         super(props);
         this.state = {
             tempsPause: this.props.tempsPause,
-            tempsTravail: this.props.tempsTravail
+            tempsTravail: this.props.tempsTravail,
+            chronoAuto: false
         }
         this.handleChangePause = this.handleChangePause.bind(this);
         this.handleChangeTravail = this.handleChangeTravail.bind(this); 
+        this.handleChangeChrono = this.handleChangeChrono.bind(this); 
     }
 
     handleChangePause(e){
@@ -23,10 +25,15 @@ class Settings extends React.Component {
         this.setState({
             tempsTravail: e.target.value
         }, () => {this.props.handleChangeTravail(this.state.tempsTravail)
-        });
-        
+        });        
     }
 
+    handleChangeChrono(e){
+        this.setState({
+            chronoAuto: e.target.checked
+        }, () => {this.props.handleChangeChrono(this.state.chronoAuto)
+        });
+    }
     
     
     
@@ -39,6 +46,11 @@ class Settings extends React.Component {
             <div>
                 <label className="label">Temps pour les périodes de pause</label>
                 <input type="text" className="input" value={this.state.tempsPause} onChange={this.handleChangePause} />
+            </div>
+            <div>
+                <label className="checkbox">Démarrer automatiquement le chrono suivant  
+                    <input type="checkbox" checked={this.state.chronoAuto} onChange={this.handleChangeChrono}/>
+                </label>
             </div>
         </div>
     }

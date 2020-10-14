@@ -5,10 +5,12 @@ class App extends React.Component {
         super(props);
         this.state = {
             tempsPause: 5,
-            tempsTravail: 25
+            tempsTravail: 25,
+            chronoAuto: false
         }
         this.handleChangePause = this.handleChangePause.bind(this); 
-        this.handleChangeTravail = this.handleChangeTravail.bind(this); 
+        this.handleChangeTravail = this.handleChangeTravail.bind(this);
+        this.handleChangeChrono = this.handleChangeChrono.bind(this); 
     }
 
     handleChangePause(temps){
@@ -24,12 +26,22 @@ class App extends React.Component {
         });
     }
 
+    handleChangeChrono(checked){
+        this.setState({
+            chronoAuto: checked
+        });
+    }
+
     render(){
         return <div>
             <div className="section">
                 <div className="columns">
                     <div className="column">
-                        <Pomodoro tempsTravail={this.state.tempsTravail} tempsPause={this.state.tempsPause}/>                    
+                        <Pomodoro 
+                            tempsTravail={this.state.tempsTravail} 
+                            tempsPause={this.state.tempsPause}
+                            chronoAuto={this.state.chronoAuto}
+                        />                    
                     </div>
                     <div className="column">
                         <Settings
@@ -37,6 +49,7 @@ class App extends React.Component {
                             tempsTravail = {this.state.tempsTravail} 
                             handleChangePause={this.handleChangePause} 
                             handleChangeTravail={this.handleChangeTravail}
+                            handleChangeChrono={this.handleChangeChrono}
                         />              
                     </div>    
                 </div>

@@ -104,6 +104,9 @@ class Pomodoro extends React.Component{
                 }
             });
         }
+        if(this.props.chronoAuto){
+            this.startTimer(); 
+        }
     }
 
     beep(){
