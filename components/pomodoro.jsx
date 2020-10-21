@@ -9,9 +9,9 @@ class Pomodoro extends React.Component{
             pomodoros_accomplis: 0,  
             timer: null,
             btnValue: "Start",
-            runningStatus: "nonRunning"
+            runningStatus: "nonRunning",
+            alarm: new Audio(props.alarm)
         }
-        this.alarm = new Audio("./ressources/analog-watch-alarm_daniel-simion.mp3"); 
         this.decrement = this.decrement.bind(this); 
         this.clickTimer = this.clickTimer.bind(this); 
         this.startTimer = this.startTimer.bind(this); 
@@ -19,9 +19,8 @@ class Pomodoro extends React.Component{
         this.switchTimer = this.switchTimer.bind(this);
         this.beep = this.beep.bind(this); 
     }
-
+    
     componentDidUpdate(prevProps, prevState){
-
         if(this.state.runningStatus == "running")
             return;
          
@@ -34,6 +33,9 @@ class Pomodoro extends React.Component{
             this.setState({
                 minutes: this.props.tempsPause
             });
+        }
+        if(prevProps.alarm != this.props.alarme){
+            this.state.alarm.src = this.props.alarm;
         }
     }
 
@@ -110,8 +112,10 @@ class Pomodoro extends React.Component{
     }
 
     beep(){
-        this.alarm.play(); 
+        this.state.alarm.play(); 
     }
+
+   
 
     render(){
         return <div className="container">
@@ -127,7 +131,7 @@ class Pomodoro extends React.Component{
             </div>
             <div className="section">
                 <p>Nombre de pomodoros que vous avez fait: {this.state.pomodoros_accomplis}</p>      
-            </div>               
+            </div>                          
         </div>
     }
 }

@@ -6,6 +6,7 @@ class Settings extends React.Component {
             tempsTravail: this.props.tempsTravail,
             chronoAuto: false
         }
+        this.alarmes = alarmes; 
         this.handleChangePause = this.handleChangePause.bind(this);
         this.handleChangeTravail = this.handleChangeTravail.bind(this); 
         this.handleChangeChrono = this.handleChangeChrono.bind(this); 
@@ -17,9 +18,6 @@ class Settings extends React.Component {
         }, () => {this.props.handleChangePause(this.state.tempsPause)
         });
     }
-    
-         
-    
 
     handleChangeTravail(e){
         this.setState({
@@ -34,8 +32,6 @@ class Settings extends React.Component {
         }, () => {this.props.handleChangeChrono(this.state.chronoAuto)
         });
     }
-    
-    
     
     render(){
         return <div className="container">
@@ -52,6 +48,10 @@ class Settings extends React.Component {
                     <input type="checkbox" checked={this.state.chronoAuto} onChange={this.handleChangeChrono}/>
                 </label>
             </div>
+            <SelecteurSons 
+                alarmes={this.alarmes}
+                handleChange={this.props.handleChangeAlarm}
+            /> 
         </div>
     }
 }

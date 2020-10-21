@@ -1,16 +1,17 @@
 class App extends React.Component {
 
-
     constructor(props){
         super(props);
         this.state = {
             tempsPause: 5,
             tempsTravail: 25,
-            chronoAuto: false
+            chronoAuto: false, 
+            alarme: ""
         }
         this.handleChangePause = this.handleChangePause.bind(this); 
         this.handleChangeTravail = this.handleChangeTravail.bind(this);
         this.handleChangeChrono = this.handleChangeChrono.bind(this); 
+        this.handleChangeAlarm = this.handleChangeAlarm.bind(this); 
     }
 
     handleChangePause(temps){
@@ -32,6 +33,12 @@ class App extends React.Component {
         });
     }
 
+    handleChangeAlarm(e){
+        this.setState({
+            alarme: e.target.value
+        })
+    }
+
     render(){
         return <div>
             <div className="section">
@@ -41,6 +48,7 @@ class App extends React.Component {
                             tempsTravail={this.state.tempsTravail} 
                             tempsPause={this.state.tempsPause}
                             chronoAuto={this.state.chronoAuto}
+                            alarm={this.state.alarme}
                         />                    
                     </div>
                     <div className="column">
@@ -50,6 +58,7 @@ class App extends React.Component {
                             handleChangePause={this.handleChangePause} 
                             handleChangeTravail={this.handleChangeTravail}
                             handleChangeChrono={this.handleChangeChrono}
+                            handleChangeAlarm={this.handleChangeAlarm}
                         />              
                     </div>    
                 </div>
@@ -57,7 +66,5 @@ class App extends React.Component {
         </div>
     }
 }
-
-
 
 ReactDOM.render(<App />, document.getElementById('app')); 
