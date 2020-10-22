@@ -14,22 +14,22 @@ class App extends React.Component {
         this.handleChangeAlarm = this.handleChangeAlarm.bind(this); 
     }
 
-    handleChangePause(temps){
+    handleChangePause(e){
         this.setState({
-            tempsPause: temps
+            tempsPause: e.target.value
         });
     }  
     
 
-    handleChangeTravail(temps){
+    handleChangeTravail(e){
         this.setState({
-            tempsTravail: temps
+            tempsTravail: e.target.value
         });
     }
 
-    handleChangeChrono(checked){
+    handleChangeChrono(e){
         this.setState({
-            chronoAuto: checked
+            chronoAuto: e.target.value
         });
     }
 
