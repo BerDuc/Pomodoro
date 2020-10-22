@@ -10,8 +10,11 @@ function SelecteurSons ({alarmes, handleChange}){
     });
     }
     return <div>
-        <select onChange={handleChange}>
-            {options}
-        </select>
+        <div className="select">
+            <select  id="selectSonnerie" onChange={handleChange}>
+                {options}
+            </select>
+        </div>
+        
     </div>
 }

@@ -34,7 +34,7 @@ class Settings extends React.Component {
     }
     
     render(){
-        return <div className="container">
+        return <div className="section">
             <div>
                 <label className="label">Temps pour les périodes de travail</label>
                 <input type="text" className="input" value={this.state.tempsTravail} onChange={this.handleChangeTravail} />
@@ -44,10 +44,11 @@ class Settings extends React.Component {
                 <input type="text" className="input" value={this.state.tempsPause} onChange={this.handleChangePause} />
             </div>
             <div>
-                <label className="checkbox">Démarrer automatiquement le chrono suivant  
-                    <input type="checkbox" checked={this.state.chronoAuto} onChange={this.handleChangeChrono}/>
+                <label className="label">Démarrer automatiquement le chrono suivant  
+                    <input className="checkbox" type="checkbox" checked={this.state.chronoAuto} onChange={this.handleChangeChrono}/>
                 </label>
             </div>
+            <label className="label">Choisir sa sonnerie</label>
             <SelecteurSons 
                 alarmes={this.alarmes}
                 handleChange={this.props.handleChangeAlarm}
