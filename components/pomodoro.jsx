@@ -10,7 +10,7 @@ class Pomodoro extends React.Component{
             timer: null,
             btnValue: "Start",
             runningStatus: "nonRunning",
-            alarm: new Audio(props.alarm)
+            alarm: new Audio(this.props.alarm)
         }
         this.decrement = this.decrement.bind(this); 
         this.clickTimer = this.clickTimer.bind(this); 
