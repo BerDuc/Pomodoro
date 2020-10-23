@@ -33,9 +33,9 @@ class App extends React.Component {
         });
     }
 
-    handleChangeAlarm(e){
+    handleChangeAlarm(alarmRef){
         this.setState({
-            alarme: e.target.value
+            alarme: alarmRef
         })
     }
 
