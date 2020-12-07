@@ -3,7 +3,7 @@ class SelecteurSons extends React.Component{
     constructor(props){
         super(props); 
         this.state = {
-            alarmRef: this.props.alarmes[0].src
+            alarm: new Audio(this.props.alarmes[0].src)
         }
         this.handleAlarmChange = this.handleAlarmChange.bind(this); 
         this.beep = this.beep.bind(this); 
@@ -11,13 +11,12 @@ class SelecteurSons extends React.Component{
 
     handleAlarmChange(e){
         this.setState({
-            alarmRef: e.target.value
-        }, () => this.props.handleChange(this.state.alarmRef)); 
+            alarm: new Audio(e.target.value)
+        }, () => this.props.handleChange(this.state.alarm)); 
     }
 
     beep(){
-        let alarmeChoisie = new Audio(this.state.alarmRef);
-        alarmeChoisie.play(); 
+        this.state.alarm.play(); 
     }
 
     render(){
