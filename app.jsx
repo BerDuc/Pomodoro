@@ -6,7 +6,7 @@ class App extends React.Component {
             tempsPause: 5,
             tempsTravail: 25,
             chronoAuto: false, 
-            alarme: ""
+            alarme: new Audio(alarmes[0].src)
         }
         this.handleChangePause = this.handleChangePause.bind(this); 
         this.handleChangeTravail = this.handleChangeTravail.bind(this);
@@ -33,9 +33,9 @@ class App extends React.Component {
         });
     }
 
-    handleChangeAlarm(alarmRef){
+    handleChangeAlarm(alarm){
         this.setState({
-            alarme: alarmRef
+            alarme: alarm
         })
     }
 

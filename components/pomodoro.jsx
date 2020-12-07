@@ -10,7 +10,7 @@ class Pomodoro extends React.Component{
             timer: null,
             btnValue: "Start",
             runningStatus: "nonRunning",
-            alarm: new Audio(this.props.alarm)
+            alarm: this.props.alarm
         }
         this.decrement = this.decrement.bind(this); 
         this.clickTimer = this.clickTimer.bind(this); 
@@ -35,7 +35,7 @@ class Pomodoro extends React.Component{
             });
         }
         if(prevProps.alarm != this.props.alarme){
-            this.state.alarm.src = this.props.alarm;
+            this.state.alarm = this.props.alarm;
         }
     }
 
@@ -112,6 +112,7 @@ class Pomodoro extends React.Component{
     }
 
     beep(){
+        console.log(JSON.stringify(this.state.alarm))
         this.state.alarm.play(); 
     }
 
