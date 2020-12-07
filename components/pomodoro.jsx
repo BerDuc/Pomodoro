@@ -112,7 +112,6 @@ class Pomodoro extends React.Component{
     }
 
     beep(){
-        console.log(JSON.stringify(this.state.alarm))
         this.state.alarm.play(); 
     }
 
